@@ -3,6 +3,309 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morris Macharia | Engineering Implementations</title>
+  <style>
+    :root {
+      --bg-dark: #060a13;
+      --bg-card: #0f1626;
+      --accent: #00ff66;
+      --accent-glow: rgba(0, 255, 102, 0.15);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Modern Glassmorphic Nav Header */
+    header {
+      background-color: rgba(15, 22, 38, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .brand p {
+      margin: 2px 0 0 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    main {
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.6rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    /* Grid for Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.3rem;
+      color: var(--text-main);
+    }
+
+    .project-card p {
+      margin: 0 0 20px 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Mini code block visualization inside cards */
+    .mini-terminal {
+      background-color: #02040a;
+      border: 1px solid #161b22;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.8rem;
+      color: #8b949e;
+      margin-bottom: 20px;
+    }
+
+    .mini-terminal span {
+      color: var(--accent);
+    }
+
+    /* Technical Stack Badges layout */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag-badge {
+      background-color: #1e293b;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .action-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: text-shadow 0.2s;
+    }
+
+    .action-link:hover {
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    footer {
+      background-color: #03050a;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 25px;
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>M_MACHARIA_></h1>
+      <p>SecOps & Forensics</p>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="sandbox.html">Live Sandbox</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Highlighted Engineering Implementations</h2>
+
+      <div class="projects-grid">
+        
+        <!-- PROJECT 1: SCANNER -->
+        <div class="project-card">
+          <div>
+            <h3>IoT Asset Telemetry & CVE Scanner</h3>
+            <div class="tag-container">
+              <span class="tag-badge">Python</span>
+              <span class="tag-badge">SQLite</span>
+              <span class="tag-badge">Tkinter</span>
+              <span class="tag-badge">Network Security</span>
+            </div>
+            <p>
+              Engineered a desktop scanning framework that handles asynchronous network discovery, extracts active device signatures, and maps open port telemetry directly against local vulnerability records to compile dynamic risk matrix scores.
+            </p>
+            <div class="mini-terminal">
+              $ python3 iot_scanner.py --sweep<br>
+              <span>[SCAN] 14 targets mapped. CVE correlations compiled.</span>
+            </div>
+          </div>
+          <a href="#" class="action-link">View Source Code _></a>
+        </div>
+
+        <!-- PROJECT 2: AES CRYPTO -->
+        <div class="project-card">
+          <div>
+            <h3>Symmetric File Transport Pipeline</h3>
+            <div class="tag-container">
+              <span class="tag-badge">Java</span>
+              <span class="tag-badge">AES Cryptography</span>
+              <span class="tag-badge">Threat Modeling</span>
+            </div>
+            <p>
+              Designed an end-to-end local data encapsulation pipeline using symmetric AES block ciphers. Executed aggressive local brute force and injection stress simulations to analyze protocol resilience and prevent transport-layer exposure.
+            </p>
+            <div class="mini-terminal">
+              javax.crypto.CipherInit(Cipher.ENCRYPT_MODE)<br>
+              <span>[OK] Cipher block initialized. AES bitstream secured.</span>
+            </div>
+          </div>
+          <a href="#" class="action-link">View Cryptography Core _></a>
+        </div>
+
+        <!-- PROJECT 3: OPENCV STEG -->
+        <div class="project-card" style="grid-column: span 1;">
+          <div>
+            <h3>Steganalysis Payload Extractor</h3>
+            <div class="tag-container">
+              <span class="tag-badge">Python</span>
+              <span class="tag-badge">OpenCV</span>
+              <span class="tag-badge">Digital Forensics</span>
+            </div>
+            <p>
+              Created an automated image analysis tool utilizing specialized OpenCV computer vision algorithms. Parses localized digital image matrices to identify pixel structural anomalies, intercepting unauthorized corporate data leaks hidden inside media files.
+            </p>
+            <div class="mini-terminal">
+              cv2.imread(target_img) -> check_pixel_variance()<br>
+              <span>[ALERT] Steganographic hidden sequence extracted.</span>
+            </div>
+          </div>
+          <a href="#" class="action-link">View Forensics Core _></a>
+        </div>
+
+        <!-- PROJECT 4: SIMULATOR LINK -->
+        <div class="project-card" style="grid-column: span 1;">
+          <div>
+            <h3>SecOps CVSS Risk Calculator</h3>
+            <div class="tag-container">
+              <span class="tag-badge">HTML5</span>
+              <span class="tag-badge">CSS Grid</span>
+              <span class="tag-badge">Vanilla JavaScript</span>
+            </div>
+            <p>
+              A frontend evaluation container designed to help engineering teams translate abstract vulnerabilities into tangible business context. Calculates real-time parameters using CVSS v3.1 vector calculations.
+            </p>
+            <div class="mini-terminal">
+              calculate_metrics(cvss, exposure_vector)<br>
+              <span>[LIVE] Rendering active sandbox instance...</span>
+            </div>
+          </div>
+          <a href="sandbox.html" class="action-link" style="color: var(--accent);">Launch Live Sandbox _></a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Nairobi, Kenya | morrismacharia004@gmail.com | +254 707 318 442
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Morris Macharia | Projects</title>
   <style>
     body {
