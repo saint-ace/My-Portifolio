@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morris Macharia | Secure Communications</title>
+  <style>
+    :root {
+      --bg-dark: #060a13;
+      --bg-card: #0f1626;
+      --accent: #00ff66;
+      --accent-glow: rgba(0, 255, 102, 0.15);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --error: #ef4444;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Modern Glassmorphic Nav Header */
+    header {
+      background-color: rgba(15, 22, 38, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .brand p {
+      margin: 2px 0 0 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    main {
+      padding: 40px;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.6rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 35px;
+      font-size: 1.05rem;
+    }
+
+    /* Contact Form Box Container */
+    .form-container {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    input, textarea {
+      width: 100%;
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(0, 255, 102, 0.1);
+    }
+
+    .btn-submit {
+      background-color: var(--accent-dim);
+      color: #060a13;
+      font-weight: 700;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--accent);
+    }
+
+    .btn-submit:disabled {
+      background-color: var(--border);
+      color: var(--text-muted);
+      cursor: not-allowed;
+    }
+
+    /* Status Notifications HUD */
+    .status-hud {
+      padding: 12px 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+    }
+
+    .hud-success {
+      display: block;
+      background-color: rgba(0, 255, 102, 0.08);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .hud-error {
+      display: block;
+      background-color: rgba(239, 68, 68, 0.08);
+      border: 1px solid var(--error);
+      color: var(--error);
+    }
+
+    footer {
+      background-color: #03050a;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 25px;
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>M_MACHARIA_></h1>
+      <p>SecOps & Forensics</p>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="sandbox.html">Live Sandbox</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Encrypted Comms Endpoint</h2>
+    <p class="subtitle">
+      Deploy an inquiry packet or communication telemetry payload directly into my active monitoring queue.
+    </p>
+
+    <div class="form-container">
+      <!-- Live Status Update Window -->
+      <div id="hud-alert" class="status-hud"></div>
+
+      <!-- Formspree Integration Endpoint Connection -->
+      <form id="secure-form" action="https://formspree.io" method="POST">
+        <div class="form-group">
+          Sender Entity / Identification</label>
+          
+        </div>
+
+        <div class="form-group">
+          <label for="email">Return Channel Connection (Email)</label>
+          <input type="email" id="email" name="email" required placeholder="name@organization.com">
+        </div>
+
+        <div class="form-group">
+          <label for="payload">Message Data Payload</label>
+          <textarea id="payload" name="message" rows="6" required placeholder="Type the transmission details here..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="dispatch-btn">Dispatch Communications</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    Nairobi, Kenya | morrismacharia004@gmail.com | +254 707 318 442
+  </footer>
+
+  <script>
+    const contactForm = document.getElementById("secure-form");
+    const alertHud = document.getElementById("hud-alert");
+    const dispatchBtn = document.getElementById("dispatch-btn");
+
+    contactForm.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      
+      // Update UI button state to represent dynamic transmission encryption
+      dispatchBtn.innerText = "Encrypting packet & transmitting...";
+      dispatchBtn.disabled = true;
+      
+      alertHud.className = "status-hud hud-success";
+      alertHud.innerText = "[INIT] Opening dynamic network socket pipeline...";
+
+      const formData = new FormData(e.target);
+
+      try {
+        const response = await fetch(e.target.action, {
+          method: contactForm.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          alertHud.className = "status-hud hud-success";
+          alertHud.innerText = "[SUCCESS] Packet accepted. Signal routed to morrismacharia004@gmail.com securely.";
+          contactForm.reset();
+        } else {
+          alertHud.className = "status-hud hud-error";
+          alertHud.innerText = "[ERROR] Transmission rejected. Endpoint server returned a 400 anomaly signature.";
+        }
+      } catch (err) {
+        alertHud.className = "status-hud hud-error";
+        alertHud.innerText = "[SYS_FAILURE] Structural socket link dropped. Check local connection bounds.";
+      } finally {
+        dispatchBtn.innerText = "Dispatch Communications";
+        dispatchBtn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
