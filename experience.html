@@ -3,76 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Morris Macharia | Experience</title>
+  <title>Morris Macharia | SecOps & Forensics Portfolio</title>
   <style>
+    :root {
+      --bg-dark: #060a13;
+      --bg-card: #0f1626;
+      --accent: #00ff66;
+      --accent-glow: rgba(0, 255, 102, 0.15);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0a0f1d;
-      color: #e2e8f0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
+
+    /* Modern Glassmorphic Nav Header */
     header {
-      background-color: #111a2e;
-      padding: 20px;
-      text-align: center;
+      background-color: rgba(15, 22, 38, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    header h1 {
+
+    .brand {
+      text-align: left;
+    }
+
+    .brand h1 {
       margin: 0;
-      color: #00ff66;
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: -0.5px;
     }
-    nav {
-      margin-top: 10px;
+
+    .brand p {
+      margin: 2px 0 0 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
+
     nav a {
-      color: #94a3b8;
+      color: var(--text-muted);
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+      margin-left: 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s, text-shadow 0.2s;
     }
-    nav a:hover {
-      color: #00ff66;
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent);
     }
-    main {
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
+
+    /* Hero Layout Section */
+    .hero-container {
+      max-width: 1100px;
+      margin: 60px auto 40px auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
     }
-    section {
-      margin-bottom: 40px;
+
+    @media (min-width: 768px) {
+      .hero-container {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
     }
-    h2 {
-      color: #00ff66;
-      border-bottom: 1px solid #1e293b;
-      padding-bottom: 5px;
+
+    .hero-text {
+      text-align: left;
     }
-    .job {
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--accent-glow);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
       margin-bottom: 20px;
+      animation: pulse 2s infinite;
     }
-    .job h3 {
-      margin: 0;
-      color: #e2e8f0;
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(0, 255, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
     }
-    .job p {
-      margin: 5px 0;
-      color: #94a3b8;
+
+    .hero-text h2 {
+      font-size: 2.8rem;
+      margin: 0 0 20px 0;
+      line-height: 1.1;
+      font-weight: 800;
     }
+
+    .hero-text p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin: 0 0 30px 0;
+      line-height: 1.6;
+    }
+
+    /* Terminal GUI Interactive Graphic element */
+    .terminal-mockup {
+      background-color: #02040a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      text-align: left;
+    }
+
+    .terminal-header {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #161b22;
+      padding-bottom: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-r { background-color: #ff5f56; }
+    .dot-y { background-color: #ffbd2e; }
+    .dot-g { background-color: #27c93f; }
+
+    .terminal-body {
+      font-size: 0.85rem;
+      color: #33ff33;
+    }
+
+    .t-white { color: #fff; }
+    .t-blue { color: #58a6ff; }
+
+    /* Action Grid Links buttons */
+    .cta-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #060a13;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 6px;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #00dd55;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 6px;
+      transition: background-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255,255,255,0.05);
+    }
+
     footer {
-      background-color: #111a2e;
+      background-color: #03050a;
+      border-top: 1px solid var(--border);
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+      padding: 25px;
+      margin-top: 80px;
       font-size: 0.9rem;
-      color: #94a3b8;
+      color: var(--text-muted);
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Experience</h1>
+    <div class="brand">
+      <h1>M_MACHARIA_></h1>
+      <p>SecOps & Forensics</p>
+    </div>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="experience.html">Experience</a>
       <a href="projects.html">Projects</a>
       <a href="sandbox.html">Live Sandbox</a>
@@ -80,37 +227,41 @@
     </nav>
   </header>
 
-  <main>
-    <section>
-      <h2>Professional Objective</h2>
+  <main class="hero-container">
+    <div class="hero-text">
+      <div class="badge">
+        <span style="display:inline-block; width:8px; height:8px; background:var(--accent); border-radius:50%;"></span>
+        Available for Technical Deployment
+      </div>
+      <h2>Securing Enterprise Infrastructure Through Code</h2>
       <p>
-        To apply rigorous academic foundations in software engineering, applied cryptosystems, and digital forensics to identify vulnerabilities and deliver secure, enterprise-grade automated protection architectures.
+        BSc. Computer Security & Forensics analyst specialized in Python automation telemetry, structural threat intelligence systems development, and applied data analytics architectures.
       </p>
-    </section>
-
-    <section>
-      <h2>Work Experience</h2>
-      <div class="job">
-        <h3>IT Event Management Engineer – [Company Name]</h3>
-        <p>2024 – Present</p>
-        <p>Managed enterprise IT events, monitored system security, and implemented automated risk mitigation workflows.</p>
+      <div class="cta-group">
+        <a href="sandbox.html" class="btn-primary">Launch Live Sandbox</a>
+        <a href="projects.html" class="btn-secondary">Explore Implementations</a>
       </div>
-      <div class="job">
-        <h3>Data Specialist – [Company Name]</h3>
-        <p>2022 – 2024</p>
-        <p>Developed SQL-based reporting pipelines, optimized Power BI dashboards, and supported forensic investigations.</p>
+    </div>
+
+    <!-- Visual Anchor: Immersive Hack Terminal Wrapper -->
+    <div class="terminal-mockup">
+      <div class="terminal-header">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
       </div>
-    </section>
-
-    <section>
-      <h2>Education</h2>
-      <p>BSc. Computer Security & Forensics – [University Name]</p>
-    </section>
-
-    <section>
-      <h2>Core Technical Stack</h2>
-      <p>Python Workflows | Digital Forensics | Cryptography (AES) | Linux Systems | Docker | React / Node.js | SQLite Management</p>
-    </section>
+      <div class="terminal-body">
+        <div><span class="t-blue">guest@macharia_sec:~$</span> initialize --profile</div>
+        <div class="t-white">Loading core infrastructure telemetry matrix...</div>
+        <div>[OK] University node resolved: <span class="t-white">Kabarak University</span></div>
+        <div>[OK] Certificate verification active: <span class="t-white">Inst. of Software Tech</span></div>
+        <div>[OK] Environment stack verified: <span class="t-white">Linux, Python, Docker</span></div>
+        <div><span class="t-blue">guest@macharia_sec:~$</span> check --modules</div>
+        <div style="color: #e3b341;">> Steganalysis Detector Matrix [ACTIVE]</div>
+        <div style="color: #e3b341;">> IoT Custom CVE Scoring Telemetry [READY]</div>
+        <div><span class="t-blue">guest@macharia_sec:~$</span> <span class="pulse-cursor">|</span></div>
+      </div>
+    </div>
   </main>
 
   <footer>
